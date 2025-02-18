@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { AppButton } from "../components/AppButton";
-import { AppHeader, Header } from "../components/AppHeader";
+import { AppHeader } from "../components/AppHeader";
 import { AppLabel } from "../components/AppLabel";
 
 const StepOne = () => {
-  const [userPhone, setUserPhone] = useState("");
+  const [userName, setUserName] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   
 useEffect(() => {
-    if (userPhone) {
+    if (userName) {
       setIsDisabled(false);
     } else {
       setIsDisabled(true);
     }
-  }, [userPhone]);
+  }, [userName]);
 
   return (
     <div className="container">
@@ -40,7 +40,7 @@ useEffect(() => {
               labelId="answer"
               labelPlaceholder="Ваш ответ"
               errorText="Введите номер в правильном формате например"
-              labelChange={setUserPhone}
+              labelChange={setUserName}
             ></AppLabel>
             
             <AppButton
