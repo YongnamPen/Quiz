@@ -2,12 +2,26 @@ import React, { useEffect, useState } from "react";
 import { AppButton } from "../components/AppButton";
 import { AppHeader } from "../components/AppHeader";
 import { AppLabel } from "../components/AppLabel";
+import { ProgressBar } from "../components/ProgressBar";
 
 const StepOne = () => {
   const [userName, setUserName] = useState("");
+
+  const [errorName, setErrorName] = useState(false);
+
   const [isDisabled, setIsDisabled] = useState(true);
-  
-useEffect(() => {
+  const RegexUser = /^[a-zA-Zа-яА-ЯёЁ\s]+$/;
+
+  const handleClick = () => {
+    if (!RegexUser.test(userName)) {
+      setErrorName(true);
+    }
+    if (RegexUser.test(userName)) {
+      setErrorName(false);
+    }
+  };
+
+  useEffect(() => {
     if (userName) {
       setIsDisabled(false);
     } else {
@@ -19,34 +33,23 @@ useEffect(() => {
     <div className="container">
       <div className="wrapper">
         <div className="single-input-quiz">
-          <div className="indicator">
-            <div className="indicator__text">
-              <span className="indicator__description">
-                Скидка за прохождение опроса:
-              </span>
-              <span className="indicator__value">15%</span>
-            </div>
-            <div className="indicator__progressbar">
-              <div className="indicator__unit indicator__unit-1"></div>
-              <div className="indicator__unit indicator__unit-2"></div>
-              <div className="indicator__unit indicator__unit-3"></div>
-              <div className="indicator__unit indicator__unit-4"></div>
-            </div>
-          </div>
+          <ProgressBar currentStep={0} />
           <div className="question">
             <AppHeader headerText="1. Занимательный вопрос"></AppHeader>
             <AppLabel
               labelType="text"
               labelId="answer"
               labelPlaceholder="Ваш ответ"
-              errorText="Введите номер в правильном формате например"
+              errorText="Введите ответ в правильном формате"
               labelChange={setUserName}
+              isError={errorName}
             ></AppLabel>
-            
+
             <AppButton
               BtnText="Далее"
-              isDisabled={isDisabled}
-              btnType="submit"
+              isDisabled={false}
+              btnType="button"
+              btnClick={() => handleClick()}
             ></AppButton>
           </div>
         </div>
