@@ -13,6 +13,7 @@ export const ProgressBar = ({ currentStep }) => {
       <div className="indicator__progressbar">
         {variant.map((elem, index) => (
           <div
+            key={index}
             className={`indicator__unit indicator__unit-${elem} ${
               currentStep > index && "_active"
             }`}

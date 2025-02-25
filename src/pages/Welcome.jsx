@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AppHeader } from "../components/AppHeader";
 import { AppButton } from "../components/AppButton";
 import { AppLabel } from "../components/AppLabel";
+import { useNavigate } from "react-router-dom";
 
 const Welcome = () => {
   const [userName, setUserName] = useState("");
@@ -15,6 +16,8 @@ const Welcome = () => {
   const RegexPhone =
     /^\+?\d{1,3}?[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
 
+  const navigate = useNavigate();
+
   const handleClick = () => {
     if (!RegexUser.test(userName)) {
       setErrorName(true);
@@ -25,6 +28,19 @@ const Welcome = () => {
     if (RegexUser.test(userName) && RegexPhone.test(userPhone)) {
       setErrorName(false);
       setErrorPhone(false);
+      const userData = JSON.parse(localStorage.getItem("user"));
+      if (userData) {
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ ...userData, name: userName, phone: userPhone })
+        );
+      } else {
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ name: userName, phone: userPhone })
+        );
+      }
+      navigate("/step-one");
     }
   };
 
@@ -65,7 +81,7 @@ const Welcome = () => {
             />
             <AppButton
               BtnText="Далее"
-              isDisabled={false}
+              isDisabled={isDisabled}
               btnType="button"
               btnClick={() => handleClick()}
             />
