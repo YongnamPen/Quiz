@@ -46,7 +46,7 @@ const StepOne = () => {
     <div className="container">
       <div className="wrapper">
         <div className="single-input-quiz">
-          <ProgressBar currentStep={0} />
+          <ProgressBar currentStep={1} />
           <div className="question">
             <AppHeader headerText="Где вы про нас узнали?"></AppHeader>
             <AppLabel

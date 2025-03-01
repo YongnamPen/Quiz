@@ -149,7 +149,7 @@ button:enabled:active {
 
 .indicator {
   position: fixed;
-  top: 70px;
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
   width: 388px;
@@ -188,6 +188,8 @@ button:enabled:active {
 }
 
 .question h2 {
+  display: flex;
+  justify-content: center;
   margin-bottom: 32px;
 }
 .question input[type=text] {
@@ -334,17 +336,36 @@ button:enabled:active {
 }
 
 .thanks img {
-  width: 160px;
+  width: 130px;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
-  margin: 0 auto 60px;
+  margin: 0 auto 40px;
 }
 .thanks h1 {
-  margin-bottom: 32px;
+  font-size: 24px;
+  margin-bottom: 28px;
 }
 .thanks p {
   font-size: 18px;
   text-align: center;
+  margin-top: 16px;
   margin-bottom: 16px;
-}/*# sourceMappingURL=main.css.map */
+}
+.thanks .info {
+  display: flex;
+  justify-content: space-between;
+}
+.thanks .info span {
+  font-size: 16px;
+  font-weight: 500;
+  color: gray;
+  margin-bottom: 8px;
+}
+/*# sourceMappingURL=main.css.map */
+
+@media screen and (max-width: 425px) {
+  .indicator {
+    width: 328px;
+  }
+}

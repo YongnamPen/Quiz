@@ -45,7 +45,7 @@ const StepTwo = () => {
     <div className="container">
       <div className="wrapper">
         <div className="variants-quiz">
-          <ProgressBar currentStep={1} />
+          <ProgressBar currentStep={2} />
           <div className="question">
             <AppHeader headerText="Выберите курс" headerType="h2" />
             <ul className="variants">

@@ -48,7 +48,7 @@ const StepThree = () => {
     <div className="container">
       <div className="wrapper">
         <div className="emoji-quiz">
-          <ProgressBar currentStep={2} />
+          <ProgressBar currentStep={3} />
           <div className="question">
             <AppHeader headerText="3. Какой у тебя характер?" headerType="h2" />
             <ul className="emoji-variants">
